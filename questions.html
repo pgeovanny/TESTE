@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}{% block content %}
+<h2>Questões</h2>
+<form class="row g-2 mb-3">
+  <div class="col"><input name="law" placeholder="Lei" class="form-control"/></div>
+  <div class="col"><input name="article" placeholder="Artigo" class="form-control"/></div>
+  <div class="col"><select name="type" class="form-control"><option value="">Tipo</option><option>Certo/Errado</option><option>Múltipla escolha</option></select></div>
+  <div class="col"><select name="difficulty" class="form-control"><option value="">Nível</option><option>Fácil</option><option>Médio</option><option>Difícil</option></select></div>
+  <div class="col"><button class="btn btn-primary">Filtrar</button></div>
+</form>
+<ul class="list-group">
+  {% for q in questions %}
+    <li class="list-group-item"><a href="{{ url_for('questions.question_detail', q_id=q.id) }}">{{ q.text[:80] }}...</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

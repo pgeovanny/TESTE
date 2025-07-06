@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}{% block content %}
+<h2>Questão</h2>
+<p>{{ question.text }}</p>
+<form method="post" class="mb-3">
+  <button name="action" value="answer" class="btn btn-success" value="true">Marcar Acerto</button>
+  <button name="action" value="answer" class="btn btn-danger" value="false">Marcar Erro</button>
+  <button name="action" value="favorite" class="btn btn-warning">Favoritar</button>
+  <button name="action" value="unfavorite" class="btn btn-secondary">Desfavoritar</button>
+</form>
+<form method="post">
+  <div class="mb-3"><textarea name="content" class="form-control"></textarea></div>
+  <button name="action" value="comment" class="btn btn-primary">Comentar</button>
+</form>
+<h3>Comentários</h3>
+<ul class="list-group">
+  {% for c in comments %}<li class="list-group-item">{{ c.content }} <small class="text-muted">{{ c.created_at }}</small></li>{% endfor %}
+</ul>
+{% endblock %}

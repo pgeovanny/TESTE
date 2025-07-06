@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}{% block content %}
+<h2>Estatísticas</h2>
+<table class="table">
+  <thead><tr><th>Lei</th><th>Total Respondidas</th></tr></thead>
+  <tbody>
+    {% for law, count in by_law %}
+    <tr><td>{{ law }}</td><td>{{ count }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
